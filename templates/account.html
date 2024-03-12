@@ -1,0 +1,39 @@
+{% block title %}
+    <title>Hi {{username}}, search for books.</title>
+{% endblock %}
+{% block body %}
+      {% if search %}
+
+<form action="{{ url_for('account') }}" method="post">
+    <div class="form-group">
+        <input  type="text" name="isbn" placeholder="ISBN">
+        <input  type="text" name="title" placeholder="Title">
+        <input  type="text" name="author" placeholder="Author">
+    </div>
+    <div>
+        <button>Search</button>
+    </div>
+  </form>
+
+  <h1>RESULTS</h1>
+
+  <p>{{results}}</p>
+  <ul>
+    {% if not results %}
+        <li> No results to display </li>
+        {% for result in results %}
+          <li>{{ result }}</li>
+       {% endfor %}
+    {% endif %}
+    {% if results %}
+       {% for result in results %}
+          <li><a href=/result/{{ result[0] }}>{{ result }}</a></li>
+       {% endfor %}
+    {% endif %}
+  </ul>
+{% endif %}
+{% if not search %}
+   <h2>Search for books</h2>
+   <h5>Welcome, you need to login first.</h5>
+{% endif %}
+{% endblock %}

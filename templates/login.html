@@ -1,0 +1,25 @@
+{% block title %}
+    <title>Login - Please login.</title>
+{% endblock %}
+
+
+{% block body  %}
+
+<h2>login below</h2>
+<form action = "{{url_for('login')}}" method ="post">
+    <div>
+        <input type="text" name = "username" placeholder = "Type a username" >
+        <input type ="password" name = "Password" placeholder = "type your password">
+        <button>Submit</button>
+        
+
+    </div>
+
+
+
+</form>
+<p> {{result}}</p>
+{% if username %}
+<p>  You have logged in as  {{ username }}.  </p>
+{% endif %}
+{% endblock %}
